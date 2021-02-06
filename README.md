@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/mike-taylor99/MLMB/blob/master/logo.png?raw=true" width="50%" alt='project-mlmb'>
+</p>
+
 # MLMB: **M**achine **L**earning on (NCAA) **M**en's **B**asketball
 
 ## What is MLMB?
