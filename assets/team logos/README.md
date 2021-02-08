@@ -8,7 +8,7 @@ Will be used to display associated team logos on front-end interface of NLMB pro
 ## Status
 Works for ~85% of NCAA Men's Basketball teams. Still under **active development**.
 
-## Installing Dependancies
+## Installing Dependencies
 ```
 pip3 install -r requirements.txt
 ```
