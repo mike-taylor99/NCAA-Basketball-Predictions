@@ -3,7 +3,10 @@ import requests
 from bs4 import BeautifulSoup
 from sportsreference.ncaab.teams import Teams
 
+import unfound_teams
+
 logo_urls = {}
+unfound_teams = unfound_teams.get_teams()
 teams = Teams()
 URL = 'https://www.ncaa.com/schools/'
 
@@ -20,7 +23,9 @@ for team in teams:
 
         results = soup.find(id='block-bespin-content')
         if not results:
-            if formatted_name.find('&-') > -1:
+            if formatted_name in unfound_teams:
+                page = requests.get(URL + unfound_teams[formatted_name])
+            elif formatted_name.find('&-') > -1:
                 page = requests.get(URL + formatted_name.replace('&-', ''))
             elif formatted_name.find('&') > -1:
                 page = requests.get(URL + formatted_name.replace('&', ''))
@@ -55,6 +60,6 @@ for team in teams:
         failed += 1
 
 with open("logos.json", "w") as write_file:
-    json.dump(logo_urls, write_file)
+    json.dump(logo_urls, write_file, sort_keys=True, indent=4)
 
 print(f'Worked: {worked}, Failed: {failed}')
